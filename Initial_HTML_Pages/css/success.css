@@ -11,12 +11,13 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 /* Main Header */
 .main-header {
   background-color: #197bca; /* Slightly darker blue */
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
 }
@@ -38,7 +39,6 @@ body {
 
 .title {
   font-size: 35px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
   font-weight: bold;
   color: #f2f2f2;
   text-align: center;
@@ -74,53 +74,65 @@ main {
   align-items: center;
   background-color: #f2f2f2;
   padding: 20px;
-  position: relative; /* Allows positioning of background image */
+  position: relative;
+  width: 100%;
 }
 
-.login-section {
+.success-section {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  z-index: 1;
+}
+
+.success-message {
+  background-color: green;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
   text-align: center;
-  z-index: 1; /* Places content above the SVG background */
-}
-
-.login-section h1 {
   margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
 }
 
-.input-field {
-  width: 100%;
+.success-message p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.log-details {
+  margin-top: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  font-weight: bold;
+  color: #333;
+  width: 40%;
+}
+
+.form-row p {
+  width: 55%;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  background-color: #f9f9f9;
+  word-wrap: break-word;
 }
 
-.btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn-login {
-  background-color: green;
-  color: white;
-}
-
-.btn-register {
-  background-color:  rgb(104, 202, 209);;
-  color: white;
+.form-row p {
+  color: #333;
+  word-break: break-word;
 }
 
 /* Background SVG */
@@ -132,14 +144,14 @@ main::before {
   width: 100%;
   height: 100%;
   background: url('parachuting-background.svg') repeat center center;
-  background-size: contain; /* Adjust as needed */
+  background-size: contain;
   opacity: 0.1; /* 10% transparency */
   z-index: 0; /* Places it behind content */
 }
 
 /* Footer Styles */
 footer {
-  background-color:  rgb(104, 202, 209);;
+  background-color: rgb(104, 202, 209);
   text-align: center;
   padding: 10px 0;
   font-size: 14px;

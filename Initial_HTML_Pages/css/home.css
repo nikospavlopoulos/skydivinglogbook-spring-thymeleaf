@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -15,8 +15,7 @@ body {
 
 /* Main Header */
 .main-header {
-  background-color: #197bca; /* Slightly darker blue */
-  /* padding: 20px; */
+  background-color: #197bca;
   display: flex;
   flex-direction: column;
 }
@@ -26,7 +25,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  height: 150px; /* Twice the height of the navbar */
+  height: 150px;
 }
 
 .logo {
@@ -38,7 +37,6 @@ body {
 
 .title {
   font-size: 35px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
   font-weight: bold;
   color: #f2f2f2;
   text-align: center;
@@ -46,7 +44,7 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: rgb(104, 202, 209); /* Lighter blue for the navbar */
+  background-color: rgb(104, 202, 209);
   padding: 10px 0;
 }
 
@@ -74,53 +72,96 @@ main {
   align-items: center;
   background-color: #f2f2f2;
   padding: 20px;
-  position: relative; /* Allows positioning of background image */
+  position: relative;
+  
 }
 
-.login-section {
-  background-color: #fff;
+.home-section {
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-  z-index: 1; /* Places content above the SVG background */
+  max-width: 1000px;
 }
 
-.login-section h1 {
+.home-section h1 {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
+  text-align: center;
 }
 
-.input-field {
+/* Table Styling */
+.jump-table {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.btn {
+.jump-table th,
+.jump-table td {
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #a8a8a8;
+  font-size: 15px;
+  font-weight:500;
+}
+
+.jump-table th {
+  background-color: #197bca;
+  color: #fff;
+  font-weight: bold;
+  height: 70px; /* Adjusted height for header row */
+}
+
+.jump-table td {
+  background-color: #f9f9f9;
+  height: 30px; /* Adjusted height for data rows */
+}
+
+.jump-table td .jump-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+
+.jump-table td .jump-icon img {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+  height: 100%;
+  object-fit: contain;
 }
 
-.btn-login {
-  background-color: green;
-  color: white;
+.notes-column {
+  width: 200px;
 }
 
-.btn-register {
-  background-color:  rgb(104, 202, 209);;
+/* Green Button */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.green-button {
+  background-color: #4caf50;
   color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  width: 60%; /* Set width to 60% for the gap to be 20% on each side */
+  display: block;
+}
+
+.green-button:hover {
+  background-color: #45a049;
 }
 
 /* Background SVG */
@@ -133,13 +174,13 @@ main::before {
   height: 100%;
   background: url('parachuting-background.svg') repeat center center;
   background-size: contain; /* Adjust as needed */
-  opacity: 0.1; /* 10% transparency */
+  opacity: 0.06; /* 10% transparency */
   z-index: 0; /* Places it behind content */
 }
 
 /* Footer Styles */
 footer {
-  background-color:  rgb(104, 202, 209);;
+  background-color: rgb(104, 202, 209);
   text-align: center;
   padding: 10px 0;
   font-size: 14px;

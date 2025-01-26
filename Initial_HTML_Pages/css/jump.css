@@ -16,7 +16,6 @@ body {
 /* Main Header */
 .main-header {
   background-color: #197bca; /* Slightly darker blue */
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
 }
@@ -38,7 +37,6 @@ body {
 
 .title {
   font-size: 35px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
   font-weight: bold;
   color: #f2f2f2;
   text-align: center;
@@ -74,53 +72,132 @@ main {
   align-items: center;
   background-color: #f2f2f2;
   padding: 20px;
-  position: relative; /* Allows positioning of background image */
+  position: relative;
 }
 
-.login-section {
+.log-jump-section {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-  z-index: 1; /* Places content above the SVG background */
+  max-width: 600px;
+  z-index: 1;
 }
 
-.login-section h1 {
+.log-jump-section h1 {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
+  text-align: center;
 }
 
-.input-field {
-  width: 100%;
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  font-weight: bold;
+  color: #333;
+  width: 40%;
+}
+
+.form-row .input-field,
+.form-row select,
+.form-row textarea {
+  width: 55%;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
 }
 
-.btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+.form-row textarea {
+  height: 80px;
 }
 
-.btn-login {
+.input-field:focus,
+select:focus,
+textarea:focus {
+  border-color: #197bca;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.jump-icon {
+  width: 100px;
+  height: 100px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+
+.btn-submit {
   background-color: green;
   color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-weight: bold;
+  width: 150px;
+  height: 100px;
+  text-align: center;
 }
 
-.btn-register {
-  background-color:  rgb(104, 202, 209);;
-  color: white;
+.btn-submit:hover {
+  background-color: #155d27;
+}
+
+/* Aircraft Type Dropdown */
+.form-row select {
+  width: 55%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-row select:focus {
+  border-color: #197bca;
+}
+/* Freefall Duration Input */
+.form-row input[type="number"] {
+  width: 55%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-row input[type="number"]:focus {
+  border-color: #197bca;
+}
+
+/* Icon Container */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Jump Icon */
+.jump-icon .icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain; /* Ensures the icon maintains its aspect ratio within the box */
 }
 
 /* Background SVG */
@@ -139,7 +216,7 @@ main::before {
 
 /* Footer Styles */
 footer {
-  background-color:  rgb(104, 202, 209);;
+  background-color: rgb(104, 202, 209);
   text-align: center;
   padding: 10px 0;
   font-size: 14px;
