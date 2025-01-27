@@ -1,4 +1,4 @@
-INSERT INTO dropzones (id, dropzone) VALUES
+INSERT INTO dropzones (id, dropzoneName) VALUES
 (1,'Hellenic Skydivers - Thiva Perneri Airfield'),
 (2,'Skydive Athens - Kopaida Airport Kastro'),
 (3,'Skydive Attica - Megara General Aviation Airport '),

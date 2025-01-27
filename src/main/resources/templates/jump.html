@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skydiving Jump Log</title>
+    <link rel="stylesheet" href="css/jump.css">
+</head>
+<body>
+
+<!--TODO Include the Header In A Separate Fragment - Don't Forget the CSS-->
+    <header class="main-header">
+        <div class="header-content">
+            <img src="img/logo.svg" alt="Logo" class="logo">
+            <h1 class="title">Skydiving Logbook</h1>
+        </div>
+    </header>
+<!--TODO Include the Header In A Separate Fragment - Don't Forget the CSS-->
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#profile">Firstname Lastname</a></li>
+            <li><a href="#email">Email</a></li>
+            <li><a href="#logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="log-jump-section">
+            <h1>Log Your Skydive Jump</h1>
+            <form action="@{/jump}" method="POST" th:object="${jumpInsertDTO}">
+
+                <!-- TODO Jump Type -->
+                <!-- DONE - Create Jumptype Service for the list -->
+
+                <div class="form-row">
+                    <label for="jump-type">Type of Jump</label>
+                    <select id="jump-type" class="input-field" th:field="*{jumptypeId}">
+                        <option value="" selected>Dropzone</option>
+                        <option th:each="jumptype : ${allJumptypes}" th:value="${jumptype.id}" th:text="${jumptype.jumptypeName}"></option>
+                    </select>
+                    <div class="form-error" th:if="${#fields.hasErrors('jumptypeId')}">
+                        <p th:errors="*{jumptypeId}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- TODO Dropzone Location -->
+                <!-- DONE - Create Dropzone Service for the list -->
+
+                <div class="form-row">
+                    <label for="dropzone-location">Dropzone Location</label>
+                    <select id="dropzone-location" class="input-field" th:field="*{dropzoneId}">
+                        <option value="" selected>Dropzone</option>
+                        <option th:each="dropzone : ${allDropzones}" th:value="${dropzone.id}" th:text="${dropzone.dropzoneName}"></option>
+                    </select>
+                    <div class="form-error" th:if="${#fields.hasErrors('dropzoneId')}">
+                        <p th:errors="*{dropzoneId}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- DONE - Date of Jump -->
+                <div class="form-row">
+                    <label for="date-of-jump">Date of Jump</label>
+                    <input type="date" id="date-of-jump" class="input-field" required th:field="*{jumpDate}"/>
+                    <div class="form-error" th:if="${#fields.hasErrors('jumpDate')}">
+                        <p th:errors="*{jumpDate}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- DONE - Exit Altitude -->
+                <div class="form-row">
+                    <label for="exit-altitude">Exit Altitude in feet</label>
+                    <input type="number" id="exit-altitude" class="input-field" placeholder="Altitude" required th:field="*{altitude}" min="3000" max="15000"/>
+                    <div class="form-error" th:if="${#fields.hasErrors('altitude')}">
+                        <p th:errors="*{altitude}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- DONE - Freefall Duration -->
+                <div class="form-row">
+                  <label for="freefall-duration">Seconds of Freefall</label>
+                  <input type="number" id="freefall-duration" class="input-field" placeholder="Freefall Duration" required th:field="*{freefallduration}" min="0" max="80"/>
+                    <div class="form-error" th:if="${#fields.hasErrors('freefallduration')}">
+                        <p th:errors="*{freefallduration}">Invalid jump type</p>
+                    </div>
+              </div>
+
+                <!-- TODO Aircraft Type -->
+                <!-- DONE - Create Aircraft Service for the list -->
+
+                <div class="form-row">
+                  <label for="aircraft">Aircraft Type</label>
+                  <select id="aircraft" class="input-field" th:field="*{aircraftId}">
+                      <option value="" selected>Aircraft</option>
+                      <option th:each="aircraft : ${allAircraft}" th:value="${aircraft.id}" th:text="${aircraft.aircraftName}"></option>
+                  </select>
+                    <div class="form-error" th:if="${#fields.hasErrors('aircraftId')}">
+                        <p th:errors="*{aircraftId}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- DONE - Notes about Jump -->
+                <div class="form-row">
+                    <label for="notes">Notes about your jump</label>
+                    <textarea id="notes" class="input-field" placeholder="Notes" th:field="*{jumpNotes}"></textarea>
+                    <div class="form-error" th:if="${#fields.hasErrors('jumpNotes')}">
+                        <p th:errors="*{jumpNotes}">Invalid jump type</p>
+                    </div>
+                </div>
+
+                <!-- TODO Icon Container and Submit Button -->
+                <div class="form-actions">
+                    <div class="jump-icon">
+                      <img src="img/FormationSketchTransparent.png" alt="Jump Icon" class="icon">
+                        <!-- Icon will appear here after selection -->
+                    </div>
+                    <button type="submit" class="btn btn-submit">Save Jump</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+<!--TODO Include the Footer In A Separate Fragment - Don't Forget the CSS-->
+	<footer>
+	    <p>Web App Created By <a href="https://github.nikospavlopoulos.com" target="_blank">Nikos Pavlopoulos (Github)</a></p>
+	</footer>
+<!--TODO Include the Header In A Separate Fragment - Don't Forget the CSS-->
+
+</body>
+</html>

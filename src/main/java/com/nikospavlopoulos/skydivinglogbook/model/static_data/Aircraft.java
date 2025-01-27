@@ -1,4 +1,4 @@
-package com.nikospavlopoulos.skydivinglogbook.model.stastic_data;
+package com.nikospavlopoulos.skydivinglogbook.model.static_data;
 
 import com.nikospavlopoulos.skydivinglogbook.model.Jump;
 import jakarta.persistence.*;
@@ -9,20 +9,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Represents a Jumptype entity in the application.
- * This entity maps to the "jumptypes" table in the database and maintains
- * a relationship with the jumps that fall under this specific jump type.
+ * Represents an Aircraft entity in the application.
+ * This entity maps to the "aircraft" table in the database and maintains
+ * relationships with jumps associated with the aircraft.
  */
-@Entity // Marks this class as a JPA entity for persistence.
+
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "jumptypes") // Maps this entity to the "jumptypes" table in the database.
-public class Jumptype {
+@Table(name = "aircraft")
+public class Aircraft {
 
     /**
-     * The unique identifier for each jump type.
+     * The unique identifier for each aircraft.
      * It is auto-generated using the IDENTITY strategy.
      */
     @Id
@@ -30,16 +31,17 @@ public class Jumptype {
     private Long id;
 
     /**
-     * The name of the jumptype (e.g., Belly, Angle, Freefly etc.).
+     * The name of the aircraft.
      */
-    private String jumptypeName;
+    private String aircraftName;
 
     /**
-     * A collection of jumps associated with this jumptype.
+     * A collection of jumps associated with this aircraft.
      */
     @Getter(AccessLevel.PRIVATE) // The annotation ensures this field is only accessible internally.
-    @OneToMany(mappedBy = "jumptypes")
+    @OneToMany(mappedBy = "aircraft")
     private Set<Jump> jumps = new HashSet<>();
+
 
     /**
      * Provides an unmodifiable(read-only) view of all associated jumps.
@@ -53,15 +55,16 @@ public class Jumptype {
     }
 
     /**
-     * Adds a jump to the jump type and sets the relationship.
+     * Convenience method: Includes common, repetitive tasks that involve multiple operations
+     * Adds a jump to the aircraft and sets the relationship.
      * This ensures both sides of the bidirectional relationship are consistent.
      *
-     * @param jump The jump to add to the jump type.
+     * @param jump The jump to add to the aircraft.
      */
     public void addJump(Jump jump) {
         if (jumps == null) jumps = new HashSet<>(); // Ensures the jumps collection is initialized. If the jumps collection is null, it initializes it to an empty HashSet.
         jumps.add(jump); // Adds the jump to the collection.
-        jump.setJump(this);
+        jump.setAircraft(this); // Sets the "aircraft" field in the Jump entity to establish the relationship.
     }
 
 }

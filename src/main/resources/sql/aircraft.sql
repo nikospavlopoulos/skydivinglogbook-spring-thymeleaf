@@ -1,4 +1,4 @@
-INSERT INTO aircraft (id, aircraft) VALUES
+INSERT INTO aircraft (id, aircraftName) VALUES
 (1,'Cessna 208 - Caravan'),
 (2,'Cessna 206 - Stationair'),
 (3,'Cessna 182 - Skylane'),

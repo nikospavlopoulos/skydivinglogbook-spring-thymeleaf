@@ -1,10 +1,12 @@
 package com.nikospavlopoulos.skydivinglogbook.model;
 
-import com.nikospavlopoulos.skydivinglogbook.model.stastic_data.Aircraft;
-import com.nikospavlopoulos.skydivinglogbook.model.stastic_data.Dropzone;
-import com.nikospavlopoulos.skydivinglogbook.model.stastic_data.Jumptype;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Aircraft;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Dropzone;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Jumptype;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Date;
 
 /**
  * Represents a skydive jump record in the application.
@@ -47,6 +49,11 @@ public class Jump extends AbstractEntity {
     private Dropzone dropzone;
 
     /**
+     * The date when the jump took place.
+     */
+    private Date jumpDate;
+
+    /**
      * The altitude (in feet) from which the jump was made.
      * Example: 13,000 feet.
      */
@@ -65,6 +72,6 @@ public class Jump extends AbstractEntity {
     /**
      * Additional notes or comments about the jump.
      */
-    private String jumpnotes;
+    private String jumpNotes;
 
 }

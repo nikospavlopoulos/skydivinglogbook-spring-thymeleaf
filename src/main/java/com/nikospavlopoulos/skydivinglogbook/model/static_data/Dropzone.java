@@ -1,4 +1,4 @@
-package com.nikospavlopoulos.skydivinglogbook.model.stastic_data;
+package com.nikospavlopoulos.skydivinglogbook.model.static_data;
 
 import com.nikospavlopoulos.skydivinglogbook.model.Jump;
 import jakarta.persistence.*;
@@ -9,21 +9,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Represents an Aircraft entity in the application.
- * This entity maps to the "aircraft" table in the database and maintains
- * relationships with jumps associated with the aircraft.
+ * Represents a Dropzone entity in the application.
+ * This entity maps to the "dropzones" table in the database and maintains
+ * a relationship with the jumps performed at the specific dropzone.
  */
 
-@Entity
+@Entity // Marks this class as a JPA entity for persistence.
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "aircraft")
-public class Aircraft {
+@Table(name = "dropzones") // Maps this entity to the "dropzones" table in the database.
+public class Dropzone {
 
     /**
-     * The unique identifier for each aircraft.
+     * The unique identifier for each dropzone.
      * It is auto-generated using the IDENTITY strategy.
      */
     @Id
@@ -31,23 +31,22 @@ public class Aircraft {
     private Long id;
 
     /**
-     * The name of the aircraft.
+     * The name of the dropzone (e.g. Skydive Athens, Skydive Greece etc).
      */
-    private String aircraftName;
+    private String dropzoneName;
 
     /**
-     * A collection of jumps associated with this aircraft.
+     * A collection of jumps associated with this dropzone.
      */
     @Getter(AccessLevel.PRIVATE) // The annotation ensures this field is only accessible internally.
-    @OneToMany(mappedBy = "aircraft")
+    @OneToMany(mappedBy = "dropzones")
     private Set<Jump> jumps = new HashSet<>();
 
-
     /**
-     * Provides an unmodifiable(read-only) view of all associated jumps.
+     * Provides an unmodifiable view of all associated jumps.
      * Ensures the integrity of the collection by preventing external modifications.
      *
-     * @return An unmodifiable set of jumps associated with this aircraft.
+     * @return An unmodifiable set of jumps associated with this dropzone.
      */
     public Set<Jump> getAllJumps() {
         if (jumps == null) jumps = new HashSet<>(); // Ensures the jumps collection is initialized. If the jumps collection is null, it initializes it to an empty HashSet
@@ -55,16 +54,15 @@ public class Aircraft {
     }
 
     /**
-     * Convenience method: Includes common, repetitive tasks that involve multiple operations
-     * Adds a jump to the aircraft and sets the relationship.
+     * Adds a jump to the dropzone and sets the relationship.
      * This ensures both sides of the bidirectional relationship are consistent.
      *
-     * @param jump The jump to add to the aircraft.
+     * @param jump The jump to add to the dropzone.
      */
     public void addJump(Jump jump) {
         if (jumps == null) jumps = new HashSet<>(); // Ensures the jumps collection is initialized. If the jumps collection is null, it initializes it to an empty HashSet.
         jumps.add(jump); // Adds the jump to the collection.
-        jump.setJump(this); // Sets the "aircraft" field in the Jump entity to establish the relationship.
+        jump.setDropzone(this); // Sets the "dropzone" field in the Jump entity to establish the relationship.
     }
 
 }

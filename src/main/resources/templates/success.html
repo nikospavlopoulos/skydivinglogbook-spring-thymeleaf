@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skydiving Jump Log - Success</title>
+    <link rel="stylesheet" href="css/success.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="img/logo.svg" alt="Logo" class="logo">
+            <h1 class="title">Skydiving Logbook</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#profile">Firstname Lastname</a></li>
+                <li><a href="#email">Email</a></li>
+                <li><a href="#logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="success-section">
+            <div class="success-message">
+                <p>Your Jump with number - <strong th:text="${jump.id}"></strong> - has been successfully logged</p>
+            </div>
+            <div class="log-details">
+                <div class="form-row">
+                    <label>Type of Jump</label>
+                    <p th:text="${jump.jumptype}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Dropzone Location</label>
+                    <p th:text="${jump.dropzone}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Date of Jump</label>
+                    <p th:text="${jump.jumpDate}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Exit Altitude</label>
+                    <p th:text="${jump.altitude}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Seconds of Freefall</label>
+                    <p th:text="${jump.freefallduration}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Aircraft Type</label>
+                    <p th:text="${jump.aircraft}"></p>
+                </div>
+
+                <div class="form-row">
+                    <label>Notes about your jump</label>
+                    <p th:text="${jump.jumpNotes}"></p>
+                </div>
+
+                <div class="return-message">
+                    <a th:href="@{/home}"> Return </a>
+                </div>
+            </div>
+        </section>
+    </main>
+	<footer>
+	    <p>Web App Created By <a href="https://github.nikospavlopoulos.com" target="_blank">Nikos Pavlopoulos (Github)</a></p>
+	</footer>
+</body>
+</html>

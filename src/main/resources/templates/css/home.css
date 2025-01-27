@@ -1,0 +1,188 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Header */
+.main-header {
+  background-color: #197bca;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 150px;
+}
+
+.logo {
+  width: 120px;
+  border-radius: 50%;
+  margin-left: 20px;
+  height: auto;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: bold;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgb(104, 202, 209);
+  padding: 10px 0;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Main Section */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  position: relative;
+  
+}
+
+.home-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1000px;
+}
+
+.home-section h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Table Styling */
+.jump-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.jump-table th,
+.jump-table td {
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #a8a8a8;
+  font-size: 15px;
+  font-weight:500;
+}
+
+.jump-table th {
+  background-color: #197bca;
+  color: #fff;
+  font-weight: bold;
+  height: 70px; /* Adjusted height for header row */
+}
+
+.jump-table td {
+  background-color: #f9f9f9;
+  height: 30px; /* Adjusted height for data rows */
+}
+
+.jump-table td .jump-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+
+.jump-table td .jump-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.notes-column {
+  width: 200px;
+}
+
+/* Green Button */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.green-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  width: 60%; /* Set width to 60% for the gap to be 20% on each side */
+  display: block;
+}
+
+.green-button:hover {
+  background-color: #45a049;
+}
+
+/* Background SVG */
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('parachuting-background.svg') repeat center center;
+  background-size: contain;
+  opacity: 0.06; /* 10% transparency */
+  z-index: 0; /* Places it behind content */
+}
+
+/* Footer Styles */
+footer {
+  background-color: rgb(104, 202, 209);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #000;
+}
