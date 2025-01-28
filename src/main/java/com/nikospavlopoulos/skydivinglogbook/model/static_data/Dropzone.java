@@ -39,7 +39,7 @@ public class Dropzone {
      * A collection of jumps associated with this dropzone.
      */
     @Getter(AccessLevel.PRIVATE) // The annotation ensures this field is only accessible internally.
-    @OneToMany(mappedBy = "dropzones")
+    @OneToMany(mappedBy = "dropzone")
     private Set<Jump> jumps = new HashSet<>();
 
     /**

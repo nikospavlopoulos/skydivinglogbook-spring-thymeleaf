@@ -2,6 +2,7 @@ package com.nikospavlopoulos.skydivinglogbook.service;
 
 import com.nikospavlopoulos.skydivinglogbook.model.static_data.Jumptype;
 import com.nikospavlopoulos.skydivinglogbook.repository.JumptypeRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class JumptypeServiceImpl implements IJumptypeService{
      * @return a list of all Jumptype entities.
      */
     @Override
+    @Transactional
     public List<Jumptype> findAllJumptypes() {
         return jumptypeRepository.findAll(); // Queries the database for all jump types.
     }

@@ -1,0 +1,28 @@
+/* Main Header */
+.main-header {
+    background-color: #197bca;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 150px;
+}
+
+.logo {
+    width: 120px;
+    border-radius: 50%;
+    margin-left: 20px;
+    height: auto;
+}
+
+.title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #f2f2f2;
+    text-align: center;
+}

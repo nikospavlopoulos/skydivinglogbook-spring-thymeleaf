@@ -38,7 +38,7 @@ public class Jumptype {
      * A collection of jumps associated with this jumptype.
      */
     @Getter(AccessLevel.PRIVATE) // The annotation ensures this field is only accessible internally.
-    @OneToMany(mappedBy = "jumptypes")
+    @OneToMany(mappedBy = "jumptype")
     private Set<Jump> jumps = new HashSet<>();
 
     /**

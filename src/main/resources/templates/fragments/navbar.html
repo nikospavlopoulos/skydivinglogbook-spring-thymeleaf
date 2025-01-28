@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<body>
+
+<nav class="navbar" th:fragment="navbarFragment">
+  <ul>
+    <li><a th:text="Firstname"></a></li>  <!-- TODO User's (authentication name) firstname lastname - check how to insert space -->
+    <li><a th:text="email">Email</a></li>  <!-- TODO User's email -->
+    <li><a th:href="@{/logout}">Logout</a></li>
+   </ul>
+ </nav>
+
+ </body>
+ </html>

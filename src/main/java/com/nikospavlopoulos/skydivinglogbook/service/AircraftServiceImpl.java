@@ -2,6 +2,7 @@ package com.nikospavlopoulos.skydivinglogbook.service;
 
 import com.nikospavlopoulos.skydivinglogbook.model.static_data.Aircraft;
 import com.nikospavlopoulos.skydivinglogbook.repository.AircraftRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class AircraftServiceImpl implements IAircraftService{
      * @return a list of all Aircraft entities.
      */
     @Override
+    @Transactional
     public List<Aircraft> findAllAircraft() {
         return aircraftRepository.findAll(); // Queries the database for all aircraft.
     }

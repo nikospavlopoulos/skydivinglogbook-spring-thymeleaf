@@ -9,14 +9,15 @@ import com.nikospavlopoulos.skydivinglogbook.service.AircraftServiceImpl;
 import com.nikospavlopoulos.skydivinglogbook.service.DropzoneServiceImpl;
 import com.nikospavlopoulos.skydivinglogbook.service.JumpServiceImpl;
 import com.nikospavlopoulos.skydivinglogbook.service.JumptypeServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for handling jump-related endpoints.
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/jump")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class JumpController {
 
@@ -38,7 +39,6 @@ public class JumpController {
 
     // Mapper for converting entities to DTOs and vice versa.
     private final Mapper mapper;
-
     /**
      * Handles GET requests to "/jump".
      * Prepares the model with necessary data for rendering the jump form view.
@@ -67,13 +67,16 @@ public class JumpController {
      * @return The name of the HTML template to be rendered, either "jump" on error or "success" on success.
      */
     @PostMapping("/jump")
-    public String saveJump(Model model, JumpInsertDTO jumpInsertDTO) {
+    public String saveJump(@ModelAttribute("jumpInsertDTO") @Valid JumpInsertDTO jumpInsertDTO, BindingResult bindingResult, Model model) {  /// Question: What does this do? Explain in detail, especially the @Valid part and the BindingResult
         Jump savedJump;
+
+        if (bindingResult.hasErrors()) {
+            return "jump";
+        }
 
         try {
             // Save the new jump using the service layer.
             savedJump = jumpServiceImpl.saveJump(jumpInsertDTO);
-
             LOGGER.info("Jump saved with id {} on date {}", savedJump.getId(), savedJump.getJumpDate());
         } catch (EntityInvalidArgumentException e) {
             LOGGER.error("Jump from {} feet on {} was not saved",
@@ -85,7 +88,7 @@ public class JumpController {
         // Convert the saved jump entity to a read-only DTO for display purposes.
         JumpReadOnlyDTO jumpReadOnlyDTO = mapper.mapToJumpReadOnlyDTO(savedJump);
         // Add the saved jump DTO to the model for the success view.
-        model.addAttribute("jump", savedJump);
+        model.addAttribute("jump", jumpReadOnlyDTO);
         // Return the success.html
         return "success";
     }

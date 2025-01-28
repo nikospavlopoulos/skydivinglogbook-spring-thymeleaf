@@ -1,4 +1,4 @@
-INSERT INTO jumptypes (id, jumptypeName) VALUES
+INSERT INTO jumptypes (id, jumptype_name) VALUES
 (1,'Belly'),
 (2,'Angle'),
 (3,'Freefly'),

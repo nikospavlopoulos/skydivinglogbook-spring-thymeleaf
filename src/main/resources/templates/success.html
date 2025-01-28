@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skydiving Jump Log - Success</title>
-    <link rel="stylesheet" href="css/success.css">
+
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/success.css}">
+
+
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-content">
-            <img src="img/logo.svg" alt="Logo" class="logo">
-            <h1 class="title">Skydiving Logbook</h1>
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#profile">Firstname Lastname</a></li>
-                <li><a href="#email">Email</a></li>
-                <li><a href="#logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+
+<div th:replace="~{fragments/header :: headerFragment}"></div>
+<div th:replace="~{fragments/navbar :: navbarFragment}"></div>
+
     <main>
         <section class="success-section">
             <div class="success-message">
@@ -38,7 +35,7 @@
 
                 <div class="form-row">
                     <label>Date of Jump</label>
-                    <p th:text="${jump.jumpDate}"></p>
+                    <p th:text="${#dates.format(jump.jumpDate,'dd-MM-YYYY')}"></p>
                 </div>
 
                 <div class="form-row">
@@ -62,13 +59,13 @@
                 </div>
 
                 <div class="return-message">
-                    <a th:href="@{/home}"> Return </a>
+                    <a th:href="@{/}"> Return </a>
                 </div>
             </div>
         </section>
     </main>
-	<footer>
-	    <p>Web App Created By <a href="https://github.nikospavlopoulos.com" target="_blank">Nikos Pavlopoulos (Github)</a></p>
-	</footer>
+
+<div th:replace="~{fragments/footer :: footerFragment}"></div>
+
 </body>
 </html>

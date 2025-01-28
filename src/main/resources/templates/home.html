@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skydiving Logbook - Home</title>
-    <link rel="stylesheet" href="css/home.css">
+
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-content">
-            <img src="img/logo.svg" alt="Logo" class="logo">
-            <h1 class="title">Skydiving Logbook</h1>
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#profile">Firstname Lastname</a></li>
-                <li><a href="#email">Email</a></li>
-                <li><a href="#logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+
+<div th:replace="~{fragments/header :: headerFragment}"></div>
+<div th:replace="~{fragments/navbar :: navbarFragment}"></div>
 
     <main>
         <section class="home-section">
@@ -41,77 +37,49 @@
                 </thead>
                 <tbody>
                     <!-- Data Row 1 -->
-                    <tr>
-                        <td>1</td>
+                    <tr th:each="jump : ${jumpsPage.content}">
+                        <td th:text="${jump.id}"></td>
 <!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
-                        <td>Lorem_1 Date</td>
-                        <td>Lorem_1 Jump Type</td>
-                        <td>Lorem_1 Dropzone</td>
-                        <td>12000</td>
-                        <td>50</td>
-                        <td>Lorem_1 Aircraft</td>
-                        <td>Lorem_1 Notes</td>
-                    </tr>
-                    <!-- Data Row 2 -->
-                    <tr>
-                        <td>2</td>
-<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
-                        <td>Lorem_2 Date</td>
-                        <td>Lorem_2 Jump Type</td>
-                        <td>Lorem_2 Dropzone</td>
-                        <td>13500</td>
-                        <td>60</td>
-                        <td>Lorem_2 Aircraft</td>
-                        <td>Lorem_2 Notes</td>
-                    </tr>
-                    <!-- Data Row 3 -->
-                    <tr>
-                        <td>3</td>
-<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
-                        <td>Lorem_3 Date</td>
-                        <td>Lorem_3 Jump Type</td>
-                        <td>Lorem_3 Dropzone</td>
-                        <td>14000</td>
-                        <td>45</td>
-                        <td>Lorem_3 Aircraft</td>
-                        <td>Lorem_3 Notes</td>
-                    </tr>
-                    <!-- Data Row 4 -->
-                    <tr>
-                        <td>4</td>
-<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
-                        <td>Lorem_4 Date</td>
-                        <td>Lorem_4 Jump Type</td>
-                        <td>Lorem_4 Dropzone</td>
-                        <td>15000</td>
-                        <td>55</td>
-                        <td>Lorem_4 Aircraft</td>
-                        <td>Lorem_4 Notes</td>
-                    </tr>
-                    <!-- Data Row 5 -->
-                    <tr>
-                        <td>5</td>
-<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
-                        <td>Lorem_5 Date</td>
-                        <td>Lorem_5 Jump Type</td>
-                        <td>Lorem_5 Dropzone</td>
-                        <td>13000</td>
-                        <td>52</td>
-                        <td>Lorem_5 Aircraft</td>
-                        <td>Lorem_5 Notes</td>
+                        <td th:text="${#dates.format(jump.jumpDate,'dd-MM-YYYY')}"></td>
+                        <td th:text="${jump.jumptype}"></td>
+                        <td th:text="${jump.dropzone}"></td>
+                        <td th:text="${jump.altitude}"></td>
+                        <td th:text="${jump.freefallduration}"></td>
+                        <td th:text="${jump.aircraft}"></td>
+                        <td th:text="${jump.jumpNotes}"></td>
                     </tr>
                 </tbody>
             </table>
 
+            <div class="pagination-controls">
+                <!-- Link to first page (disabled if already on the first page) -->
+                <a th:if="${currentPage > 0}" th:href="@{/(page=0, size=${jumpsPage.size})}">&#x25C0; First</a>
+                <span th:if="${currentPage == 0}" class="disabled">&#x25C0; First</span>
+
+                <!-- Link to previous page (disabled if already on the first page) -->
+                <a th:if="${currentPage > 0}" th:href="@{/(page=${currentPage - 1}, size=${jumpsPage.size})}"> &larr; Prev</a>
+                <span th:if="${currentPage == 0}" class="disabled">&larr; Prev</span>
+
+                <!-- Display current page / total pages -->
+                <span th:text="${currentPage + 1} + ' / ' + ${totalPages}"></span>
+
+                <!-- Link to next page (disabled if on the last page) -->
+                <a th:if="${currentPage + 1 < totalPages}" th:href="@{/(page=${currentPage + 1}, size=${jumpsPage.size})}">Next &rarr;</a>
+                <span th:if="${currentPage + 1 == totalPages}" class="disabled">Next &rarr;</span>
+
+                <!-- Link to last page (disabled if already on the last page) -->
+                <a th:if="${currentPage + 1 < totalPages}" th:href="@{/(page=${totalPages - 1}, size=${jumpsPage.size})}">Last &#x25B6;</a>
+                <span th:if="${currentPage + 1 == totalPages}" class="disabled">Last &#x25B6;</span>
+            </div>
+
             <!-- Green Button -->
             <div class="button-container">
-                <a href="#" class="green-button">Click Here to Log your Jump</a>
+                <a th:href="@{/jump}" class="green-button">Click Here to Log your Jump</a>
             </div>
         </section>
     </main>
 
-	<footer>
-	    <p>Web App Created By <a href="https://github.nikospavlopoulos.com" target="_blank">Nikos Pavlopoulos (Github)</a></p>
-	</footer>
+<div th:replace="~{fragments/footer :: footerFragment}"></div>
+
 </body>
 </html>

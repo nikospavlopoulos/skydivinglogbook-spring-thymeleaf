@@ -2,6 +2,7 @@ package com.nikospavlopoulos.skydivinglogbook.service;
 
 import com.nikospavlopoulos.skydivinglogbook.model.static_data.Dropzone;
 import com.nikospavlopoulos.skydivinglogbook.repository.DropzoneRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class DropzoneServiceImpl implements IDropzoneService{
      * @return a list of all Dropzone entities.
      */
     @Override
+    @Transactional
     public List<Dropzone> findAllDropzones() {
         return dropzoneRepository.findAll(); // Queries the database for all dropzones.
     }

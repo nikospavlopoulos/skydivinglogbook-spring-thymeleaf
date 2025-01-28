@@ -2,14 +2,21 @@ package com.nikospavlopoulos.skydivinglogbook.service;
 
 import com.nikospavlopoulos.skydivinglogbook.core.exceptions.EntityInvalidArgumentException;
 import com.nikospavlopoulos.skydivinglogbook.dto.JumpInsertDTO;
+import com.nikospavlopoulos.skydivinglogbook.dto.JumpReadOnlyDTO;
 import com.nikospavlopoulos.skydivinglogbook.mapper.Mapper;
 import com.nikospavlopoulos.skydivinglogbook.model.Jump;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Aircraft;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Dropzone;
+import com.nikospavlopoulos.skydivinglogbook.model.static_data.Jumptype;
 import com.nikospavlopoulos.skydivinglogbook.repository.AircraftRepository;
 import com.nikospavlopoulos.skydivinglogbook.repository.DropzoneRepository;
 import com.nikospavlopoulos.skydivinglogbook.repository.JumpRepository;
 import com.nikospavlopoulos.skydivinglogbook.repository.JumptypeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,6 +50,27 @@ public class JumpServiceImpl implements IJumpService {
 
         Jump jump = mapper.mapToJumpEntity(dto); // Maps the input DTO to a Jump entity.
 
+        Aircraft aircraft = aircraftRepository.findById(dto.getAircraftId()).orElse(null); /// Question: What does this do? Explain in detail
+        jump.setAircraft(aircraft);
+
+        Dropzone dropzone = dropzoneRepository.findById(dto.getDropzoneId()).orElseThrow(()-> new EntityInvalidArgumentException("Dropzone", "Dropzone Invalid")); /// Question: What does this do? Explain in detail
+        jump.setDropzone(dropzone);
+
+        Jumptype jumptype = jumptypeRepository.findById(dto.getJumptypeId()).orElseThrow(()-> new EntityInvalidArgumentException("Jumptype", "Jumptype Invalid")); /// Question: What does this do? Explain in detail
+        jump.setJumptype(jumptype);
+
         return jumpRepository.save(jump); // Persists the jump entity to the database.
     }
+
+    public Page<JumpReadOnlyDTO> getPaginatedJumps(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Jump> jumpsPage = jumpRepository.findAll(pageable);
+
+        return jumpsPage.map(mapper::mapToJumpReadOnlyDTO);
+
+    }
+
+
 }
