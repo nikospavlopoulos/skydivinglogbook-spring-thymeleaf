@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration  /// Question: What does this @Configuration do? Explain in detail
 @RequiredArgsConstructor
-public class CustomAuthenticationProvider {  /// Question: What does this do? Explain in detail
+public class CustomAuthenticationProvider {  /// Question: What does this class do? Explain in detail
 
     private final UserDetailsService userDetailsService;
 
@@ -30,6 +30,7 @@ public class CustomAuthenticationProvider {  /// Question: What does this do? Ex
         return config.getAuthenticationManager();
     }
 
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

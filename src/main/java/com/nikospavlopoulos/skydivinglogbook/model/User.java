@@ -20,7 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "users")
-public class User implements UserDetails {
+public class User implements UserDetails { /// Question: What does this class do? Explain in detail
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

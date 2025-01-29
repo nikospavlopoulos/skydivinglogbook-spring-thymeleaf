@@ -1,8 +1,11 @@
 package com.nikospavlopoulos.skydivinglogbook.mapper;
 
+import com.nikospavlopoulos.skydivinglogbook.core.enums.Role;
 import com.nikospavlopoulos.skydivinglogbook.dto.JumpInsertDTO;
 import com.nikospavlopoulos.skydivinglogbook.dto.JumpReadOnlyDTO;
+import com.nikospavlopoulos.skydivinglogbook.dto.UserInsertDTO;
 import com.nikospavlopoulos.skydivinglogbook.model.Jump;
+import com.nikospavlopoulos.skydivinglogbook.model.User;
 import org.springframework.stereotype.Component;
 
 /**
@@ -52,8 +55,11 @@ public class Mapper {
                 jump.getAircraft().getAircraftName(),
                 jump.getJumpNotes()
         );
+    }
 
-
+    public User mapToUserEntity(UserInsertDTO userInsertDTO) {
+        return new User(null, userInsertDTO.getUsername(),
+                userInsertDTO.getPassword(), Role.valueOf(userInsertDTO.getRole().toUpperCase()));
     }
 
 

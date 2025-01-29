@@ -185,3 +185,4 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,intellij,linux
 
 test/
+logback-spring.xml
