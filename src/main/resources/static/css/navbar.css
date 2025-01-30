@@ -14,8 +14,20 @@
     margin: 0 15px;
 }
 
-.navbar a {
+/*.navbar a {*/
+/*    text-decoration: none;*/
+/*    color: #000;*/
+/*    font-weight: bold;*/
+/*}*/
+
+.username {
     text-decoration: none;
-    color: #000;
+    color: #2a4c21;
+    font-weight: bold;
+}
+
+.logout {
+    text-decoration: none;
+    color: #1449d5;
     font-weight: bold;
 }

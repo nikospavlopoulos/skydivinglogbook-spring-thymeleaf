@@ -14,26 +14,32 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Represents a user entity in the database.
+ * This class implements the {@link UserDetails} interface, which is required by Spring Security
+ * for user authentication and authorization.
+ */
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "users")
-public class User implements UserDetails { /// Question: What does this class do? Explain in detail
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String password;
+    private String username; //Username of the user, acts as a unique identifier
+    private String password; //Encrypted password of the user.
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // Persists the enum value as a String in the database.
     private Role role;
 
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() { //Returns the authorities granted to the user for role-based access control
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 

@@ -13,59 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Main Header */
-.main-header {
-  background-color: #197bca; /* Slightly darker blue */
-  /* padding: 20px; */
-  display: flex;
-  flex-direction: column;
-}
-
-.header-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  height: 150px; /* Twice the height of the navbar */
-}
-
-.logo {
-  width: 120px;
-  border-radius: 50%;
-  margin-left: 20px;
-  height: auto;
-}
-
-.title {
-  font-size: 35px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
-  font-weight: bold;
-  color: #f2f2f2;
-  text-align: center;
-}
-
-/* Navbar */
-.navbar {
-  background-color: rgb(104, 202, 209); /* Lighter blue for the navbar */
-  padding: 10px 0;
-}
-
-.navbar ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-}
-
-.navbar li {
-  margin: 0 15px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-
 /* Main Section */
 main {
   flex: 1;
@@ -92,6 +39,13 @@ main {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
+}
+
+.uspass-instructions{
+  text-align: center;
+  padding: 10px 0;
+  font-size: 12px;
+  color: #808080;
 }
 
 .input-field {
@@ -122,7 +76,13 @@ main {
   background-color:  rgb(104, 202, 209);;
   color: white;
 }
-
+.href-register {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  background-color:  rgb(104, 202, 209);;
+  color: white;
+}
 /* Background SVG */
 main::before {
   content: '';
@@ -137,11 +97,6 @@ main::before {
   z-index: 0; /* Places it behind content */
 }
 
-/* Footer Styles */
-footer {
-  background-color:  rgb(104, 202, 209);;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 14px;
-  color: #000;
+.error {
+  color: red;
 }

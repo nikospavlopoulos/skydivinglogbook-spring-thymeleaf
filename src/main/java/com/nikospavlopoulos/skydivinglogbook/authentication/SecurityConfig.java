@@ -9,35 +9,48 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration /// Question: What does this @Configuration do? Explain in detail
-@EnableWebSecurity  /// Question: What does this @EnableWebSecurity do? Explain in detail
-public class SecurityConfig { /// Question: What does this class do? Explain in detail
+/**
+ * Configures web application security, including authentication and authorization rules.
+ */
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
 
+    /**
+     * Configures the security filter chain for the application.
+     * @param http the HttpSecurity object used to define security rules.
+     * @return a SecurityFilterChain that contains the configured security settings.
+     * @throws Exception if an error occurs during configuration.
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { /// Question: I don't understand anything about what does this class do? Comment each line extensively and outsite the code explain each one in detail
         http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorize
+                .csrf(AbstractHttpConfigurer::disable)  // Disables Cross-Site Request Forgery (CSRF) protection.
+                .authorizeHttpRequests(authorize // Defines rules for authorizing HTTP requests.
                         -> authorize
-                        .requestMatchers("/", "home.html").permitAll()
-                        .requestMatchers("/jump/**").hasAnyAuthority(Role.SKYDIVER.name(), Role.ADMIN.name())
-                        .requestMatchers("/register").permitAll()
-                        .requestMatchers("/css/**").permitAll()
-                        .requestMatchers("/img/**").permitAll()
-                        //.requestMatchers("/js/**").permitAll()
+                        .requestMatchers("/", "home.html").hasAnyAuthority(Role.SKYDIVER.name(), Role.ADMIN.name()) // Restricted to specific roles. Currently, All Logged
+                        .requestMatchers("/jump/**").hasAnyAuthority(Role.SKYDIVER.name(), Role.ADMIN.name())  // Restricted to specific roles. Currently, All Logged
+                        .requestMatchers("/success/**").hasAnyAuthority(Role.SKYDIVER.name(), Role.ADMIN.name()) // Restricted to specific roles. Currently All Logged In Roles.
+                        // TODO Future feature  - ADMIN only Accesses All Users(SKYDIVERS) and is able to read all jump data  - Each SKYDIVER only has data logged by their own user account. Currently the APP does not have this functionality.
+
+                        .requestMatchers("/login").permitAll() // Allows anyone to access the login page.
+                        .requestMatchers("/register").permitAll() // Allows anyone to access the registration page.
+                        .requestMatchers("/registersuccess").permitAll() // Allows anyone to access the registration success page.
+                        .requestMatchers("/registerfail").permitAll() // Allows anyone to access the registration success page.
+                        .requestMatchers("/css/**", "/img/**", "/js/**").permitAll() // Allows static resources.
                         .anyRequest().authenticated()
                 )
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/login")   /// Question: This is the default for POST Requests. How to change it to my own login page that I have in the templates and make sure I get the information using thymeleaf?
-                        .permitAll()
-                        .defaultSuccessUrl("/")
+                .formLogin(formLogin -> formLogin   // Configures form-based login settings.
+                        .loginPage("/login") // Configures form-based login settings.
+                        .permitAll() // Allows anyone to access the login page.
+                        .defaultSuccessUrl("/") // Redirects to the home page upon successful login.
                 )
-                .httpBasic(Customizer.withDefaults())
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/login")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
+                .httpBasic(Customizer.withDefaults()) // Enables HTTP Basic authentication.
+                .logout(logout -> logout // Configures logout behavior.
+                        .logoutSuccessUrl("/login") // Redirects to the login page after logout.
+                        .invalidateHttpSession(true) // Invalidates the HTTP session.
+                        .deleteCookies("JSESSIONID") // Deletes the session cookie.
                 );
-        return http.build();
+        return http.build(); // Builds and returns the configured security filter chain for a new login-register etc
     }
 }

@@ -37,7 +37,6 @@ public class Mapper {
 
     /**
      * Converts a Jump entity into a JumpReadOnlyDTO.
-     *
      * @param jump the Jump entity to be converted.
      * @return a JumpReadOnlyDTO populated with data from the Jump entity.
      */
@@ -57,10 +56,19 @@ public class Mapper {
         );
     }
 
+    /**
+     * Converts a UserInsertDTO into a User entity.
+     * @param userInsertDTO the DTO containing user data.
+     * @return a User entity populated with the DTO data.
+     */
     public User mapToUserEntity(UserInsertDTO userInsertDTO) {
         return new User(null, userInsertDTO.getUsername(),
-                userInsertDTO.getPassword(), Role.valueOf(userInsertDTO.getRole().toUpperCase()));
-    }
+                userInsertDTO.getPassword(), Role.SKYDIVER);
+    } // Registration from the Web Panel will be only for a Skydiver Role
+      // ADMIN roles can only be preregistered in the database.
+      // Plan for future functionality to save jumps linked to each user for access,
+      // and ADMIN role will have an interface to see all jumps and filter per user.
+      // Currently, app does not have this functionality
 
 
 }

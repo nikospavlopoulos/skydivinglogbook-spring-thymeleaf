@@ -4,38 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-content">
-            <img src="images/logo.svg" alt="Logo" class="logo">
-            <h1 class="title">Skydiving Logbook</h1>
-        </div>
-	<!-- <nav class="navbar">
-	    <ul>
-		<li><a href="#home">Home</a></li>
-		<li><a href="#about">About</a></li>
-		<li><a href="#services">Services</a></li>
-		<li><a href="#contact">Contact</a></li>
-	    </ul>
-	</nav> -->
-    </header>
+    <div th:replace="~{fragments/header :: headerFragment}"></div>
+
     <main>
         <section class="login-section">
             <h1>Register</h1>
-            <form>
-                <input type="text" placeholder="Username" class="input-field" required>
-                <input type="password" placeholder="Password" class="input-field" required>
-                <input type="text" placeholder="First Name" class="input-field" required>
-                <input type="text" placeholder="Last Name" class="input-field" required>
+            <form method="POST" th:object="${userInsertDTO}" >
+
+                <input type="text" th:field="*{username}" placeholder="Username" class="input-field" required>
+                <span class="uspass-instructions">Username must be between 3 and 10 characters long</span>
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red;"></div>
+
+                <input th:field="*{password}" type="password" placeholder="Password" class="input-field" required>
+                <span class="uspass-instructions">Password must be at least 8 characters long, include letters, numbers, and one special character</span>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red;"></div>
+
+<!--                <input type="text" placeholder="First Name" class="input-field" required>-->
+<!--                <input type="text" placeholder="Last Name" class="input-field" required>-->
                 <!-- <button type="submit" class="btn btn-login">Login</button>  -->
-                <button type="button" class="btn btn-register">Register</button>
+
+                <button type="submit" class="btn btn-register">Register</button>
             </form>
         </section>
     </main>
-	<footer>
-	    <p>Web App Created By <a href="https://github.nikospavlopoulos.com" target="_blank">Nikos Pavlopoulos (Github)</a></p>
-	</footer>
+    <div th:if="${errorMessage}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></div>
+
+    <div th:replace="~{fragments/footer :: footerFragment}"></div>
+
 </body>
 </html>
