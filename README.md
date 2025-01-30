@@ -1,5 +1,6 @@
 # Skydiving Logbook
 
+This is my first Full Stack project. A project built with the guidance of Athens University of Economics and Business Coding Classes. 
 A web application to log and manage your skydiving jumps, built using Java Spring Boot, Thymeleaf, and MySQL.
 
 * * *
