@@ -67,7 +67,7 @@ public class JumpController {
      * @return The name of the HTML template to be rendered, either "jump" on error or "success" on success.
      */
     @PostMapping("/jump")
-    public String saveJump(@ModelAttribute("jumpInsertDTO") @Valid JumpInsertDTO jumpInsertDTO, BindingResult bindingResult, Model model) {  /// Question: What does this do? Explain in detail, especially the @Valid part and the BindingResult
+    public String saveJump(@ModelAttribute("jumpInsertDTO") @Valid JumpInsertDTO jumpInsertDTO, BindingResult bindingResult, Model model) {
         Jump savedJump;
 
         if (bindingResult.hasErrors()) {

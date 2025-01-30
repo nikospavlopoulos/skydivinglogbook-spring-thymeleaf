@@ -6,7 +6,7 @@ package com.nikospavlopoulos.skydivinglogbook.core.exceptions;
  * in the system (e.g., a missing record in the database).
  */
 
-public class EntityNotFoundException extends EntityGenericException { /// Question: What does this do? Explain in detail
+public class EntityNotFoundException extends EntityGenericException {
 
     // Default code used to specify the nature of this exception.
     private static final String DEFAULT_CODE = " Not Found ";

@@ -67,7 +67,7 @@ public class JumpInsertDTO {
     /**
      * Notes about the jump. (optional)
      */
-    @Size(max = 300, message = "What are you writing? An essay? Keep it under 300 characters")
+    @Size(max = 500, message = "What are you writing? An essay? Keep it under 500 characters")
     private String jumpNotes;
 
 }

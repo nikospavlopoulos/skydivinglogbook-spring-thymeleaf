@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/springsecurity">
 <head>
+
 </head>
 
 <body>
 
 <nav class="navbar" th:fragment="navbarFragment">
-  <ul>
-    <li><a th:text="Firstname"></a></li>  <!-- TODO User's (authentication name) firstname lastname - check how to insert space -->
-    <li><a th:text="email">Email</a></li>  <!-- TODO User's email -->
-    <li><a th:href="@{/logout}">Logout</a></li>
+   <ul>
+        <li><a class="username" sec:authorize="isAuthenticated()" th:text="${#authentication.name}"> </a>
+        <li><a class="logout" th:href="@{/logout}" sec:authorize="isAuthenticated()">Έξοδος</a>
    </ul>
  </nav>
 

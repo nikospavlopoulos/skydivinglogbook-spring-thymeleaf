@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Successfully</title>
+
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/registersuccess.css}">
+
+
+</head>
+<body>
+<div th:replace="~{fragments/header :: headerFragment}"></div>
+
+<main>
+    <section class="success-section">
+
+        <div class="success-message">
+            <p><strong>Registration Successful</strong></p>
+        </div>
+
+        <div class="button-container">
+            <a th:href="@{/login}" class="green-button">Click Here to Login</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footerFragment}"></div>
+
+</body>
+</html>

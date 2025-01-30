@@ -36,10 +36,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Data Row 1 -->
+                <!-- Iterates through jumpsPage.content to generate table rows -->
                     <tr th:each="jump : ${jumpsPage.content}">
                         <td th:text="${jump.id}"></td>
-<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>-->
+<!--                        <td><div class="jump-icon"><img src="images/FormationSketchTransparent.png" alt="Icon" class="icon"></div></td>--> <!--TODO Future Feature: Auto-Change the icon according to the Jumptype-->
                         <td th:text="${#dates.format(jump.jumpDate,'dd-MM-YYYY')}"></td>
                         <td th:text="${jump.jumptype}"></td>
                         <td th:text="${jump.dropzone}"></td>

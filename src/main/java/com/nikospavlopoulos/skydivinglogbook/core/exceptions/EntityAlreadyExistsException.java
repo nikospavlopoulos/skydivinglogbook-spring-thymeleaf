@@ -4,10 +4,9 @@ package com.nikospavlopoulos.skydivinglogbook.core.exceptions;
  * A custom exception to indicate that an entity already exists.
  * This exception is thrown when an attempt is made to create an entity that
  * already exists in the system (e.g., duplicate entry).
- * TODO:entity already exists only potential uses in User
  */
 
-public class EntityAlreadyExistsException extends EntityGenericException { /// Question: What does this do? Explain in detail
+public class EntityAlreadyExistsException extends EntityGenericException {
 
     // Default code used to specify the nature of this exception.
     private static final String DEFAULT_CODE = " Already Exists ";

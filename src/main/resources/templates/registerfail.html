@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Failed</title>
+
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/registerfail.css}">
+
+
+</head>
+<body>
+<div th:replace="~{fragments/header :: headerFragment}"></div>
+
+<main>
+
+
+    <section class="success-section">
+        <div class="fail-message">
+            <p><strong>Registration Failed</strong></p>
+            <p><strong>This Skydiver Already Exists</strong></p>
+        </div>
+        <div class="button-container">
+            <a th:href="@{/register}" class="green-button">Click Here to Try Again Bro</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: footerFragment}"></div>
+
+</body>
+</html>
