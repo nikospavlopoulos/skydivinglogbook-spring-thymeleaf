@@ -23,7 +23,7 @@ public class SecurityConfig {
      * @throws Exception if an error occurs during configuration.
      */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { /// Question: I don't understand anything about what does this class do? Comment each line extensively and outsite the code explain each one in detail
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)  // Disables Cross-Site Request Forgery (CSRF) protection.
                 .authorizeHttpRequests(authorize // Defines rules for authorizing HTTP requests.

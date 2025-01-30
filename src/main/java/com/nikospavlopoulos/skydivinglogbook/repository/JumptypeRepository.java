@@ -12,6 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
  * Extends JpaRepository to provide CRUD operations.
  * Extends JpaSpecificationExecutor to allow complex queries using specifications.
  */
-public interface JumptypeRepository extends JpaRepository<Jumptype, Long>, JpaSpecificationExecutor<Jumptype> { /// Question: What does this class do? Explain in detail
+public interface JumptypeRepository extends JpaRepository<Jumptype, Long>, JpaSpecificationExecutor<Jumptype> {
 
 }

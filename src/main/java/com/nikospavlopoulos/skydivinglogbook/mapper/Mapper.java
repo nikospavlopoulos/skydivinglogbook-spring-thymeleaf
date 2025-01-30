@@ -69,6 +69,4 @@ public class Mapper {
       // Plan for future functionality to save jumps linked to each user for access,
       // and ADMIN role will have an interface to see all jumps and filter per user.
       // Currently, app does not have this functionality
-
-
 }
