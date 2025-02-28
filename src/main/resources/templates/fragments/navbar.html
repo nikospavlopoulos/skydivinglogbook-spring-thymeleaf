@@ -9,7 +9,7 @@
 <nav class="navbar" th:fragment="navbarFragment">
    <ul>
         <li><a class="username" sec:authorize="isAuthenticated()" th:text="${#authentication.name}"> </a>
-        <li><a class="logout" th:href="@{/logout}" sec:authorize="isAuthenticated()">Έξοδος</a>
+        <li><a class="logout" th:href="@{/logout}" sec:authorize="isAuthenticated()">Exit</a>
    </ul>
  </nav>
 
