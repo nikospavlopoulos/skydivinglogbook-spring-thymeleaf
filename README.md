@@ -42,6 +42,12 @@ The Skydiving Logbook allows users to record and view their skydiving jump detai
 - **Build Tool:** Gradle
 - **Deployment:** Apache Tomcat (local deployment)
 
+## Database Schema
+
+The database schema defines the relationships between jumps, aircraft, dropzones, and jump types with users only for authorization and access.
+
+![Database Schema](./src/main/resources/static/img/DB_Schema.png)
+
 * * *
 
 ## Getting Started
