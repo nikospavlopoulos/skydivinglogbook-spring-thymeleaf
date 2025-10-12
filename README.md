@@ -1,9 +1,48 @@
-# Skydiving Logbook - Thymeleaf Web App
+# ⚠️ PROJECT ARCHIVED
 
-This is my first Full Stack project. A project built with the guidance of Athens University of Economics and Business Coding Classes. 
-A web application to log and manage your skydiving jumps, built using Java Spring Boot, Thymeleaf, and MySQL.
+> **This repository has been archived and is no longer maintained.**
+> 
+> This was my capstone project for the **Athens University of Economics and Business Coding Classes**, completed in **Jan 2025** as my first full-stack application.
+>
+> ### ➡️ **For the actively maintained version with modern architecture:**
+> ## **[Skydiving Logbook REST API](https://github.com/nikospavlopoulos/skydivinglogbook-spring-rest)**
+>
+
+---
+
+## About This Version
+
+This project represents my first complete full-stack application, developed as a capstone project for the Athens University of Economics and Business Coding Classes in 2024. It demonstrates foundational skills in:
+
+- **Spring Boot MVC** with server-side rendering using Thymeleaf
+- **Spring Security** for authentication and authorization
+- **Spring Data JPA** with MySQL database integration
+- **Gradle** build automation
+- User authentication and session management
+- CRUD operations for jump logging
+
+### Why This Version Is Archived
+
+After completing this project, I identified several opportunities for architectural improvement and modern best practices
+
+> **Key improvements in Skydiving Logbook REST API:**
+> - ✅ Modern REST API architecture (decoupled backend/frontend)
+> - ✅ JWT-based stateless authentication
+> - ✅ Comprehensive test coverage
+> - ✅ Docker containerization for easy deployment
+> - ✅ Extensible design supporting future SPA and Android app
+
+**Lessons Learned:**
+This project taught me the fundamentals of Spring Boot development, but also revealed the limitations of tightly-coupled MVC architectures for modern applications. The experience directly informed the design decisions in the new project, where separation of concerns and API-first design became priorities.
+
+*This project marks the beginning of my journey into software development, transitioning from a Sales & Customer Service career into full-stack engineering. The evolution from Thymeleaf Web App to REST API demonstrates continuous learning, architectural thinking, and commitment to best practices.*
 
 * * *
+---
+
+## Original Project Documentation
+
+*Below is the original documentation for this version. Note that dependencies and setup instructions may be outdated.*
 
 ## Table of Contents
 
